@@ -18,7 +18,7 @@ const LayoutBase = () => {
             <Cabecalho>
                 <Container>
                     <Row align="center">
-                        <Col>
+                        <Col> 
                             <FreelandoLogo />
                         </Col>
                         <Col style={{ textAlign: 'right' }}>
