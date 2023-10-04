@@ -1,34 +1,38 @@
 import { Col, Container, Row } from "react-grid-system"
-import { Outlet } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom"
 import { Cabecalho } from "../componentes/Cabecalho/Cabecalho"
 import { FreelandoLogo } from "../componentes/Icones/FreelandoLogo"
 import { IconeInstagram } from "../componentes/Icones/IconeInstagram"
 import { IconeTwitch } from "../componentes/Icones/IconeTwitch"
 import { IconeTwitter } from "../componentes/Icones/IconeTwitter"
 import { IconeWhatsApp } from "../componentes/Icones/IconeWhatsApp"
-import { Link } from "../componentes/Link/Link"
+import { Link as LinkComponent } from "../componentes/Link/Link"
 import { ItemListaInline } from "../componentes/Lista/ItemListaInline"
 import { ListaInline } from "../componentes/Lista/ListaInline"
 import { Rodape } from "../componentes/Rodape/Rodape"
 import { Tipografia } from "../componentes/Tipografia/Tipografia"
 
-const LayoutBase = ({children}) => {
+const LayoutBase = ({ children }) => {
     return (
         <>
             <Cabecalho>
                 <Container>
                     <Row align="center">
-                        <Col> 
+                        <Col>
                             <FreelandoLogo />
                         </Col>
                         <Col style={{ textAlign: 'right' }}>
-                            <Link>Login</Link>
+                            <LinkComponent>
+                                <Link to="/login">
+                                    Login
+                                </Link>
+                            </LinkComponent>
                         </Col>
                     </Row>
                 </Container>
             </Cabecalho>
-                <Outlet />
-                {children}
+            <Outlet />
+            {children}
             <Rodape>
                 <Container>
                     <Row align="center">
