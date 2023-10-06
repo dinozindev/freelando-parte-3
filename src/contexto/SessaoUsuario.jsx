@@ -1,5 +1,6 @@
 import { createContext, useContext } from "react";
 import httpInstance from "../http";
+import { ArmazenadorToken } from "../utils/ArmazenadorToken";
 
 export const SessaoUsuarioContext = createContext({
     usuarioEstaLogado: false,
@@ -20,7 +21,9 @@ export const SessaoUsuarioProvider = ({ children }) => {
             email,
             senha
         })
-            .then(response => console.log(response))
+            .then(response => {
+                ArmazenadorToken.definirTokens(response.data.access_token, response.data.refresh_token);
+            })
             .catch(error => console.error(error)) 
     }
 
