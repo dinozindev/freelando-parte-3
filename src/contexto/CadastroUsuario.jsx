@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import httpInstance from '../http';
+import http from '../http';
 
 const usuarioInicial = {
     perfil: '',
@@ -104,7 +104,7 @@ export const CadastroUsuarioProvider = ({ children }) => {
     }
 
     const submeterUsuario = () => {
-        httpInstance.post('auth/register', usuario)
+        http.post('auth/register', usuario)
             .then(() => {
                 navegar('/cadastro/concluido');
             })

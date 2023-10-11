@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
-import httpInstance from "../http";
 import { ArmazenadorToken } from "../utils/ArmazenadorToken";
+import http from "../http";
 
 export const SessaoUsuarioContext = createContext({
     usuarioEstaLogado: false,
@@ -17,7 +17,7 @@ export const SessaoUsuarioProvider = ({ children }) => {
 
     // requisição post responsável por enviar os dados de login do usuário. 
     const login = (email, senha) => {
-        httpInstance.post('auth/login', {
+        http.post('auth/login', {
             email,
             senha
         })
