@@ -11,8 +11,10 @@ import { ItemListaInline } from "../componentes/Lista/ItemListaInline"
 import { ListaInline } from "../componentes/Lista/ListaInline"
 import { Rodape } from "../componentes/Rodape/Rodape"
 import { Tipografia } from "../componentes/Tipografia/Tipografia"
+import { useSessaoUsuarioContext } from "../contexto/SessaoUsuario"
 
 const LayoutBase = ({ children }) => {
+    const { usuarioEstaLogado, logout } = useSessaoUsuarioContext();
     return (
         <>
             <Cabecalho>
@@ -21,13 +23,21 @@ const LayoutBase = ({ children }) => {
                         <Col>
                             <FreelandoLogo />
                         </Col>
-                        <Col style={{ textAlign: 'right' }}>
-                            <LinkComponent>
-                                <Link to="/login">
-                                    Login
-                                </Link>
-                            </LinkComponent>
-                        </Col>
+                        {usuarioEstaLogado ?
+                            <Col style={{ textAlign: "right" }}>
+                                <LinkComponent onClick={logout}>
+                                    Logout
+                                </LinkComponent>
+                            </Col> :
+                            <Col style={{ textAlign: 'right' }}>
+                                <LinkComponent>
+                                    <Link to="/login">
+                                        Login
+                                    </Link>
+                                </LinkComponent>
+                            </Col>
+                        }
+
                     </Row>
                 </Container>
             </Cabecalho>
